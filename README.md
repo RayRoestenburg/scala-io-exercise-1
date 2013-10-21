@@ -23,14 +23,15 @@ Exercise
   - create the child actor
   - remove the direct implementation and delegate to reverse request to ReverseActor. use ask pattern, mapTo future, complete with Future.
   - run the tests
-
-- Define a Main App which starts up the ActorSystem.
-  - Start a Receptionist Actor that listens to an endpoint. (TBD direct Spray can or routes)
-  - define reception of external message, translate to Pong
-  - Start a component/worker Actor from the receptionist Actor that will do the work (the PingActor).
-  - respond back to Receptionist, translate
 - Run the application
   - Test with httpie (or curl or your fav http command line tool)
+
+
+What is already prepared:
+
+- A Main App which starts up the ActorSystem.
+  - Starts a Receptionist Actor that listens to an endpoint.
+  - Receptionist defines reception of external message
 
 
 Ideas (For next exercises):
