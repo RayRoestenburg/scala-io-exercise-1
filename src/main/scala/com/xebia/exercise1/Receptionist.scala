@@ -7,7 +7,7 @@ import spray.httpx.SprayJsonSupport._
 
 class Receptionist extends HttpServiceActor with ReverseRoute {
 
-  // create the child actor: ReverseActor
+  //TODO create the child actor: ReverseActor
 
   def receive = runRoute(reverseRoute)
 
@@ -18,7 +18,7 @@ trait ReverseRoute extends HttpService {
   def reverseRoute:Route = path("reverse") {
     post {
       entity(as[ReverseRequest]) { request =>
-       // send message to ReverseActor instead and get the response back.
+       //TODO send message to ReverseActor instead and get the response back.
         val response = ReverseResponse(request.value.reverse)
         complete(StatusCodes.OK, response)
       }
