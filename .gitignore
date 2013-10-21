@@ -1,0 +1,23 @@
+.env
+
+# Web Project
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+coverage
+test-results.xml
+
+# Scala project
+*.class
+*.log
+dist/*
+target/
+lib_managed/
+src_managed/
+.scala_dependencies
+.idea*
+.sublime
+*.sublime-*
+
