@@ -1,44 +1,72 @@
 Exercise 1
 ==========
 
-In this exercise you will learn about a pattern known as *the Receptionist*.
+In this exercise you will learn about a pattern known as **the Receptionist**.
 
 The Receptionist has the following responsibilities:
 
-- Receive messages from the outside world using some endpoint configuration. The receptionist receives messages and
-delegates to child actors to do the work. The child actors respond back to the receptionist for request response cycle or
-the receptionist signals child actors fire and forget.
-- Supervise the child actors.
-- Create the child actors.
+- Receive messages from the outside world using some endpoint.
+- Create child actors.
+- delegate to child actors to do the work. The child actors respond back to the receptionist for a request/response interaction (or
+the receptionist notifies child actors 'fire and forget style' which is not part of this exercise.)
+- Supervise the child actors. (the default supervision strategy is used, supervision is not part of this exercise.)
+
+###Objective
+
+The objective of this exercise is to get familiar with the **Receptionist** pattern. 
+You will learn how a child actor is created by the Receptionist and how work is delegated to the child actor.
+Although [Spray](http://spray.io) is used in the exercise it is not required to know Spray to complete the exercise, since all required code to hook up to HTTP is provided.
+
+###What is already prepared
+
+A **Main** App which uses the Spray-can HTTP IO extension. This Main app creates the ActorSystem, starts the HTTP extension and registers the **Receptionist** Actor as HTTP listener.
+If you comment out the **ReverseActorSpec** the /reverse path should work.
+The Receptionist listens on the path "/reverse" for a HTTP POST of a JSON entity, for instance:
+  
+    
+    { 
+      "value" : "reverse this!"
+    }   
+
+An example using the **httpie** command line tool:
+
+      http POST localhost:8000/reverse value="reverse this\\!"
+
+The result should be something like:
+
+    HTTP/1.1 200 OK
+    {
+      "value": "!siht esrever"
+    }
+
+In  this exercise you will replace the default string reversal code inside the ReverseRoute (which is mixed into the Receptionist) with a call to a child actor: the ReverseActor.
+ 
+###The Exercise
+
+Look for the TODO's in the project and follow the instructions.
+The following tasks will need to be completed:
+
+Implement the ReverseActor (reverse a string and send back to sender).
+
+- define ReverseActor
+- define Reverse case class and ReverseResult case class
+- Make the existing ReverseActorSpec pass.
+- create the child reverse actor in the Receptionist
+- remove the direct implementation and delegate to the ReverseActor.
+
+The Receptionist receives a ReverseRequest which needs to be converted to the message that the ReverseActor understands.
+
+  - use the ask pattern, mapTo a typed future
+  - run the tests, all tests should pass
+
+Run the application
+
+  - Run the application by using 'sbt run' from the project root (this starts the spray-can server on localhost:8000)
+  - Test with httpie (or curl or your fav HTTP command line tool)
+The example below shows a call using httpie:  
+  
+      http POST localhost:8000/reverse value="reverse this\\!"
 
 
-Exercise
-~~~~~~~~
-
-- implement ReverseActor (reverse a string and send back to sender).
-  - define ReverseActor
-  - define Reverse case class and Reversed case class
-  - Test Reverse Actor
-- Receptionist
-  - create the child actor
-  - remove the direct implementation and delegate to reverse request to ReverseActor. use ask pattern, mapTo future, complete with Future.
-  - run the tests
-- Run the application
-  - Test with httpie (or curl or your fav http command line tool)
-
-
-What is already prepared:
-
-- A Main App which starts up the ActorSystem.
-  - Starts a Receptionist Actor that listens to an endpoint.
-  - Receptionist defines reception of external message
-
-
-Ideas (For next exercises):
-  - add a counter (how many times was reverse called, fire and forget (event Stream or tell) and request the number of counts)
-
-  - define one string that crashes your dear ReverseActor. create a supervisorStrategy that restarts X times, after which the
-    'reverse service' is taken offline or switches behavior. (using Stop after x times, death watch and create a new child which
-    does something else than reverse, like sending ReverseError back which turns into a status code)
-
-  - do a reverse, then uppercase 'flow'.
+###Next Exercise
+A better way to create the child **ReverseActor** for easier unit testing of the Receptionist.
