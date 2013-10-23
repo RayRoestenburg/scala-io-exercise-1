@@ -5,10 +5,11 @@ import spray.routing._
 
 import spray.httpx.SprayJsonSupport._
 import scala.concurrent.{ExecutionContext, Future}
+import akka.util.Timeout
 
 class Receptionist extends HttpServiceActor with ReverseRoute {
 
-  //TODO create child reverse actor
+  //TODO add a createChild method which creates a child actor from props and name
 
   def receive = runRoute(reverseRoute)
 
@@ -16,20 +17,21 @@ class Receptionist extends HttpServiceActor with ReverseRoute {
 
 trait ReverseRoute extends HttpService {
 
-  //TODO define a method that returns the ActorRef to the reverse actor
+  //TODO define a val that returns the one ActorRef to the reverse actor using the createChild method
 
   def reverseRoute:Route = path("reverse") {
     post {
       entity(as[ReverseRequest]) { request =>
-        // We will fix this import in a next exercise
         import ExecutionContext.Implicits.global
+        import scala.concurrent.duration._
+        implicit val timeout = Timeout(20 seconds)
 
         import akka.pattern.ask
 
-        //TODO replace the next line by asking the actor to Reverse and mapping the result to a Future[ReverseResult]
-        val futureResult = Future.successful(ReverseResponse(request.value.reverse))
+        //TODO replace the next line by asking the actor to Reverse
+        //and converting (hint: mapping) the result to a Future[ReverseResponse]
+        val futureResponse = Future.successful(ReverseResponse(request.value.reverse))
 
-        val futureResponse = futureResult.map(r=> ReverseResponse(r.value))
         complete(futureResponse)
       }
     }

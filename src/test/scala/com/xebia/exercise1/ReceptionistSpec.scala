@@ -11,10 +11,12 @@ class ReceptionistSpec extends Specification with Specs2RouteTest {
 
   val subject = new ReverseRoute {
     implicit def actorRefFactory: ActorRefFactory = system
+
+    //TODO implement createChild here as well purely for testing.
   }
 
   "The Receptionist" should {
-    "Respond with a JSON response that contains a reversed string" in {
+    "Respond with a JSON response that contains a reversed string value" in {
 
       Post("/reverse", ReverseRequest("some text to reverse")) ~> subject.reverseRoute ~> check {
         status === StatusCodes.OK
