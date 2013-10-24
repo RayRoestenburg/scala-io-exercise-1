@@ -12,7 +12,7 @@ class ReceptionistSpec extends Specification with Specs2RouteTest {
   val subject = new ReverseRoute {
     implicit def actorRefFactory: ActorRefFactory = system
 
-    //TODO implement createChild here as well purely for testing.
+    //TODO implement createChild here as well (hint: you cannot use the context since the context is not available here)
   }
 
   "The Receptionist" should {
