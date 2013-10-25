@@ -1,10 +1,3 @@
-import com.typesafe.sbt.SbtStartScript
-
-seq(SbtStartScript.startScriptForClassesSettings: _*)
-
-seq(Revolver.settings: _*)
-
-
 name := "exercise-1"
 
 organization := "xebia"
@@ -50,7 +43,3 @@ libraryDependencies ++= {
     "org.specs2"              %%  "specs2"                 % "2.1.1"        % "test"
   )
 }
-
-site.settings
-
-site.sphinxSupport()

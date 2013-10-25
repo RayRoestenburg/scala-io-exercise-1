@@ -9,7 +9,6 @@ git clone https://github.com/RayRoestenburg/scala-io-exercise-2.git
 git clone https://github.com/RayRoestenburg/scala-io-exercise-3.git
 git clone https://github.com/RayRoestenburg/scala-io-exercise-4.git
 git clone https://github.com/RayRoestenburg/scala-io-exercise-5.git
-git clone https://github.com/RayRoestenburg/scala-io-exercise-6.git
 ```
 
  * Install sbt. See http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html
