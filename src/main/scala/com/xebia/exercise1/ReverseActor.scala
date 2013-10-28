@@ -3,13 +3,16 @@ package com.xebia.exercise1
 import akka.actor.{Actor, Props}
 
 object ReverseActor {
-  //TODO define messages for reverse actor here (Reverse, ReverseResult)
-  //TODO define props and name for ReverseActor here
+  def props = Props[ReverseActor]
+  def name = "reverse"
+  case class Reverse(value:String)
+  case class ReverseResult(value:String)
 }
 
-class ReverseActor { // TODO extend from Actor
+class ReverseActor extends Actor{
   import ReverseActor._
-
-  //TODO write your receive method here, respond with a ReverseResult
+  def receive = {
+    case Reverse(value) => sender ! ReverseResult(value.reverse)
+  }
 
 }

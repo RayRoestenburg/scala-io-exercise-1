@@ -5,7 +5,7 @@ import org.specs2.mutable.Specification
 import spray.http.StatusCodes
 
 import spray.httpx.SprayJsonSupport._
-import akka.actor.ActorRefFactory
+import akka.actor.{Props, ActorRef, ActorRefFactory}
 
 class ReceptionistSpec extends Specification with Specs2RouteTest {
 
@@ -13,7 +13,7 @@ class ReceptionistSpec extends Specification with Specs2RouteTest {
     implicit def actorRefFactory: ActorRefFactory = system
     implicit def executionContext = system.dispatcher
 
-    //TODO implement createChild here as well (hint: you cannot use the context since the context is not available here)
+    def createChild(props:Props, name:String): ActorRef = system.actorOf(props, name)
   }
 
   "The Receptionist" should {
