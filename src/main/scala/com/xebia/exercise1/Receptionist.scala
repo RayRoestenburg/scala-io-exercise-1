@@ -1,20 +1,22 @@
-package com.xebia.exercise1
+package com.xebia
+package exercise1
 
 import scala.concurrent.duration._
-
-import spray.routing._
-
-import spray.httpx.SprayJsonSupport._
 import scala.concurrent.{ExecutionContext, Future}
+
 import akka.util.Timeout
 
-class Receptionist extends HttpServiceActor with ReverseRoute {
+import spray.routing._
+import spray.httpx.SprayJsonSupport._
+
+
+class Receptionist extends HttpServiceActor
+                      with ReverseRoute {
   implicit def executionContext = context.dispatcher
 
   //TODO add a createChild method which creates a child actor from a specified Props and name
 
   def receive = runRoute(reverseRoute)
-
 }
 
 trait ReverseRoute extends HttpService {
@@ -23,7 +25,7 @@ trait ReverseRoute extends HttpService {
 
   //TODO define a val that returns the one ActorRef to the reverse actor using the createChild method
 
-  def reverseRoute:Route = path("reverse") {
+  def reverseRoute: Route = path("reverse") {
     post {
       entity(as[ReverseRequest]) { request =>
         implicit val timeout = Timeout(20 seconds)

@@ -1,8 +1,11 @@
-package com.xebia.exercise1
+package com.xebia
+package exercise1
 
 import org.specs2.mutable.Specification
-import TestSupport._
+
 import spray.testkit.Specs2RouteTest
+
+import TestSupport._
 
 class ReverseActorSpec extends Specification {
 
