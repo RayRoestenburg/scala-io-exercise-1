@@ -1,6 +1,8 @@
-package com.xebia.exercise1
+package com.xebia
+package exercise1
 
 import org.specs2.mutable.Specification
+
 import TestSupport._
 
 class ReverseActorSpec extends Specification {
@@ -17,7 +19,6 @@ class ReverseActorSpec extends Specification {
       expectMsg(ReverseResult("!siht esrever"))
 
       expectNoMsg()
-
     }
   }
 }

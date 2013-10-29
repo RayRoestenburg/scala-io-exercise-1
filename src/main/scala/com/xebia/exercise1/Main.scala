@@ -1,7 +1,9 @@
-package com.xebia.exercise1
+package com.xebia
+package exercise1
 
 import akka.actor.{Props, ActorSystem}
 import akka.io.IO
+
 import spray.can.Http
 import spray.can.Http.Bind
 
