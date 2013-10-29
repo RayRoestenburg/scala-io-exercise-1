@@ -20,7 +20,6 @@ class Receptionist extends HttpServiceActor with ReverseRoute {
 }
 
 trait ReverseRoute extends HttpService {
-  // we need this so we can use Futures and Timeout
   implicit def executionContext: ExecutionContext
 
   def createChild(props:Props, name:String):ActorRef
