@@ -11,7 +11,8 @@ import spray.routing._
 import spray.httpx.SprayJsonSupport._
 
 
-class Receptionist extends HttpServiceActor with ReverseRoute {
+class Receptionist extends HttpServiceActor
+                      with ReverseRoute {
   implicit def executionContext = context.dispatcher
 
   def createChild(props:Props, name:String) = context.actorOf(props, name)
@@ -22,7 +23,7 @@ class Receptionist extends HttpServiceActor with ReverseRoute {
 trait ReverseRoute extends HttpService {
   implicit def executionContext: ExecutionContext
 
-  def createChild(props:Props, name:String):ActorRef
+  def createChild(props:Props, name:String): ActorRef
 
   val reverseActor = createChild(ReverseActor.props, ReverseActor.name)
 
