@@ -69,4 +69,4 @@ The example below shows a call using httpie:
 
 
 ###Next Exercise
-A better way to create the child **ReverseActor** for easier unit testing of the Receptionist.
+A better way to create the child **ReverseActor** for easier unit testing of the Receptionist. Go to [Exercise 2](https://github.com/RayRoestenburg/scala-io-exercise-2)
