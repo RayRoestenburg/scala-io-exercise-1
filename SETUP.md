@@ -11,7 +11,7 @@ git clone https://github.com/RayRoestenburg/scala-io-exercise-4.git
 git clone https://github.com/RayRoestenburg/scala-io-exercise-5.git
 ```
 
- * Install sbt. See http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html
+ * Install sbt. Please use version 0.13, this project uses a plugin for generating idea project files compatible with sbt 0.13. See http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html
  * Install IntelliJ or your IDE/editor of choice
      * (download from https://www.jetbrains.com/idea/download/)
      * Setup sbt-idea plugin globally:
