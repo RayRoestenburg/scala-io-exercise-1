@@ -16,7 +16,7 @@ git clone https://github.com/RayRoestenburg/scala-io-exercise-5.git
      * (download from https://www.jetbrains.com/idea/download/)
      * Setup sbt-idea plugin globally:
        Add this code to your `~/.sbt/0.13/plugins/plugins.sbt` file:
-       ```scala
+       ```
        addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.1")
        ```
  * Start `sbt` in the project directory
