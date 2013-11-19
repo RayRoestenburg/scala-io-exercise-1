@@ -1,3 +1,5 @@
+If you don't have a working Scala developemtn setup yet, please see the [setup instructions](SETUP.md)
+
 Exercise 1
 ==========
 
