@@ -32,8 +32,17 @@ The MaxPermSize should be omitted when using Java 8.
        ```
        addSbtPlugin("com.orrsella" % "sbt-sublime" % "1.0.9")
        ```
+ * Scala IDE (Eclipse)
+     * (download from http://scala-ide.org/)
+     * Setup sbt-eclipse plugin globally:
+       Add this code to your `~/.sbt/0.13/plugins/plugins.sbt` file:
+       ```
+       addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.5.0")
+       ```
  * Start `sbt` in the project directory
- * Type `gen-idea` to generate idea project (if required)
- * Type `gen-sublime` to generate Sublime Text project (if required) 
+ * Generate a project for your IDE/Editor of choice:
+ * Type `gen-idea` to generate Intellij IDEA project
+ * Type `gen-sublime` to generate Sublime Text project
+ * Type `eclipse` to generate Eclipse project
  * Run `test` in sbt to get started
  * Verify that the tests work
