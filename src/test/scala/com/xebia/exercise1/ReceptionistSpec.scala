@@ -25,7 +25,7 @@ class ReceptionistSpec extends Specification
 
       Post("/reverse", ReverseRequest("some text to reverse")) ~> subject.reverseRoute ~> check {
         status === StatusCodes.OK
-        val response = entityAs[ReverseResponse]
+        val response = responseAs[ReverseResponse]
         response.value must beEqualTo("esrever ot txet emos")
       }
 
