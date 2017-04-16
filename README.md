@@ -13,13 +13,13 @@ The Receptionist has the following responsibilities:
 the receptionist notifies child actors 'fire and forget style' which is not part of this exercise.)
 - Supervise the child actors. (the default supervision strategy is used, supervision is not part of this exercise.)
 
-###Objective
+### Objective
 
 The objective of this exercise is to get familiar with the **Receptionist** pattern. 
 You will learn how a child actor is created by the Receptionist and how work is delegated to the child actor.
 Although [Spray](http://spray.io) is used in the exercise it is not required to know Spray to complete the exercise, since all required code to hook up to HTTP is provided.
 
-###What is already prepared
+### What is already prepared
 
 A **Main** App which uses the Spray-can HTTP IO extension. This Main app creates the ActorSystem, starts the HTTP extension and registers the **Receptionist** Actor as HTTP listener.
 If you comment out the **ReverseActorSpec** the /reverse path should work.
@@ -43,7 +43,7 @@ The result should be something like:
 
 In  this exercise you will replace the default string reversal code inside the ReverseRoute (which is mixed into the Receptionist) with a call to a child actor: the ReverseActor.
  
-###The Exercise
+### The Exercise
 
 Look for the TODO's in the project and follow the instructions.
 The following tasks will need to be completed:
@@ -70,5 +70,5 @@ The example below shows a call using httpie:
       http POST localhost:8000/reverse value="reverse this\\!"
 
 
-###Next Exercise
+### Next Exercise
 A better way to create the child **ReverseActor** for easier unit testing of the Receptionist. Go to [Exercise 2](https://github.com/RayRoestenburg/scala-io-exercise-2)
